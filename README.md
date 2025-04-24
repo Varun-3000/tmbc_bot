@@ -38,7 +38,7 @@ This FastAPI application integrates with Meta's WhatsApp Business Manager API to
     ```
     http://127.0.0.1:8000/send_message?phone_number=%2B<phone_number>
     ```
-    Note: %2B is the URL-encoded form for +91 (country code for India)
+    Note: %2B is the URL-encoded form for '+'
 
 ## Endpoint
 
