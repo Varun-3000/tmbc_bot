@@ -44,7 +44,3 @@ This FastAPI application integrates with Meta's WhatsApp Business Manager API to
 
 - `GET /send_message?phone_number=<E.164_format_number>`
     - Sends a test message to the provided phone number.
-
-# Setting Up WhatsApp API
-
-
