@@ -1,70 +1,50 @@
-# TMBC WhatsApp Messaging Bot 🚀
+# FastAPI WhatsApp Messaging Application
 
-A FastAPI-based service that sends WhatsApp messages using Meta's WhatsApp Business Cloud API.
+This FastAPI application integrates with Meta's WhatsApp Business Manager API to send a test message to a specified WhatsApp number.
 
----
+## Requirements
 
-## ✅ Objective
-
-Expose an API endpoint `/send_message` that sends a message to a specified WhatsApp number using Meta’s Cloud API.
-
----
-
-## 📨 Message Format
-
-The message sent:
-> "Hello, this is a test message from our TMBC bot!"
-
----
-
-## 📌 Features
-
-- Accepts `phone_number` as a query parameter
-- Validates phone number format (E.164 standard)
-- Integrates with Meta’s WhatsApp Business API
-- Sends either:
-  - A **template message** (recommended for production)
-  - A plain text message (only works within 24h session)
-- Returns success/failure JSON response
-
----
-
-## ⚙️ Tech Stack
-
-- Python 3.10+
+- Python 3.8 or later
 - FastAPI
 - Uvicorn
-- `requests` library
+- Requests
+- python-dotenv
 
----
+## Setup Instructions
 
-## 📂 Project Structure
-tmbc_bot/
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/<yourusername>/tmbc_bot.git
+    cd tmbc_bot
+    ```
 
-├── main.py            # 📌 This is where your FastAPI app lives — the entry point
+2. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-├── utils.py           # 🔧 Contains helper functions (e.g., phone validation, sending messages)
+3. Create a `.env` file in the root of the project with the following content:
+    ```
+    WHATSAPP_TOKEN=<your_whatsapp_access_token>
+    WHATSAPP_PHONE_NUMBER_ID=<your_whatsapp_phone_number_id>
+    ```
 
-├── requirements.txt   # 📦 Lists all dependencies you need to install
+4. Run the FastAPI application:
+    ```bash
+    uvicorn main:app --reload
+    ```
 
-└── README.md          # 📘 Documentation file
+5. Visit the endpoint in your browser or via cURL:
+    ```
+    http://127.0.0.1:8000/send_message?phone_number=%2B<phone_number>
+    ```
+    Note: %2B is the URL-encoded form for +91 (country code for India)
 
----
+## Endpoint
 
-## 🧪 Prerequisites
+- `GET /send_message?phone_number=<E.164_format_number>`
+    - Sends a test message to the provided phone number.
 
-1. **Meta Developer Account**
-2. **A WhatsApp Business Account (WABA)**
-3. **A verified phone number (sandbox works for testing)**
-4. **Your WhatsApp Access Token**
-5. **Your Phone Number ID** (from Meta Dev Portal)
+# Setting Up WhatsApp API
 
----
 
-## 🔐 Add Your Credentials
-
-In `utils.py`, update the following constants:
-
-```python
-WHATSAPP_TOKEN = "your_generated_access_token"
-PHONE_NUMBER_ID = "your_whatsapp_phone_number_id"
